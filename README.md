@@ -1,11 +1,11 @@
-# KAWA·CHAIN — Decentralized Coffee Supply Chain Traceability
+# KAWA·CHAIN  Decentralized Coffee Supply Chain Traceability
 
 A complete dApp that tracks Rwandan coffee batches from farmer to buyer on a
 blockchain. Every batch is an ERC-721 NFT certificate; custody moves
 Farmer → Processor → Exporter → Buyer with each hand-off validated by
 on-chain role-based access control; payment is held in escrow and released
 atomically on delivery; documents are stored via IPFS; and anyone can verify
-a batch with a QR code — no wallet needed.
+a batch with a QR code  no wallet needed.
 
 **Everything in this project runs 100% free**: a local Hardhat blockchain
 (free), MetaMask (free), Hardhat's built-in funded test accounts (free fake
@@ -45,9 +45,9 @@ FARMER ──mint──> Harvested ──transfer──> Processed ──transfe
 
 ## Prerequisites (all free)
 
-1. **Docker Desktop** — https://www.docker.com/products/docker-desktop
-   (no Node.js or npm needed on your machine — they live inside the containers)
-2. **MetaMask browser extension** — https://metamask.io
+1. **Docker Desktop**  https://www.docker.com/products/docker-desktop
+   (no Node.js or npm needed on your machine  they live inside the containers)
+2. **MetaMask browser extension**  https://metamask.io
 3. That's it. No API keys, no accounts, no testnet faucets.
 
 ---
@@ -70,7 +70,7 @@ When the logs show *"Blockchain ready on port 8545"*, open:
 **http://localhost:5173**
 
 To stop: `Ctrl+C` (or `docker compose down`).
-To restart fresh: `docker compose up` — the chain resets and re-seeds itself
+To restart fresh: `docker compose up`  the chain resets and re-seeds itself
 every start (remember to clear MetaMask activity data, see tip below).
 The first build takes a few minutes; later starts are fast.
 
@@ -81,7 +81,7 @@ The first build takes a few minutes; later starts are fast.
 npm install && node scripts/compile-solc.js          # once
 cd frontend && npm install && cd ..                  # once
 
-npx hardhat node                                     # terminal 1 — leave running
+npx hardhat node                                     # terminal 1  leave running
 node scripts/deploy-standalone.js && node scripts/seed.js   # terminal 2
 cd frontend && npm run dev                           # terminal 3
 ```
@@ -100,7 +100,7 @@ Open http://localhost:5173
    (The app will also offer to add/switch this network for you.)
 
 2. Import the demo accounts (Account menu → **Import account** → paste key).
-   These are Hardhat's public test keys — they only exist on your machine.
+   These are Hardhat's public test keys  they only exist on your machine.
 
    | Role      | Private key |
    |-----------|-------------|
@@ -109,7 +109,7 @@ Open http://localhost:5173
    | Exporter  | `0x7c852118294e51e653712a81e05800f419141751be58f605c371e15141b007a6` |
    | Buyer     | `0x47e179ec197488593b187f80a00eb0da91f1b9d0b13f8733639f19c30a34926a` |
 
-   ⚠️ Never use these keys on a real network — they are publicly known.
+   ⚠️ Never use these keys on a real network  they are publicly known.
 
 3. Switch between the imported accounts in MetaMask to act as each role.
 
@@ -127,7 +127,7 @@ Open http://localhost:5173
 3. **Processor account** → Dashboard → *Hand to exporter* (`0x90F7...b906`).
 4. **Buyer account** → Dashboard → the batch appears in *Market* →
    enter an ETH amount → **Fund escrow** (funds lock in the contract).
-5. When the coffee "arrives", Buyer clicks **Confirm delivery** — one
+5. When the coffee "arrives", Buyer clicks **Confirm delivery**  one
    transaction transfers the NFT certificate to the buyer AND pays the
    exporter. Check the exporter's ETH balance go up.
 6. Open the batch page → print/scan the **QR code** → the public
@@ -135,7 +135,7 @@ Open http://localhost:5173
 7. **Analytics** shows live charts and the raw blockchain event log.
 
 Wrong-order transfers (e.g. farmer → buyer directly) are rejected by the
-smart contract — try it and watch the transaction revert.
+smart contract  try it and watch the transaction revert.
 
 ---
 
@@ -149,7 +149,7 @@ With Docker only, run it inside the chain image:
 docker compose run --rm --entrypoint bash chain ./run-e2e.sh
 ```
 
-Or with local Node.js: `./run-e2e.sh` — 20 checks, self-contained.
+Or with local Node.js: `./run-e2e.sh`  20 checks, self-contained.
 
 ---
 
@@ -164,4 +164,4 @@ Or with local Node.js: `./run-e2e.sh` — 20 checks, self-contained.
 
 The contracts themselves are production-grade patterns (OpenZeppelin
 AccessControl, ERC721URIStorage, ReentrancyGuard, checks-effects-interactions)
-— nothing about the free setup weakens the on-chain logic.
+ nothing about the free setup weakens the on-chain logic.
