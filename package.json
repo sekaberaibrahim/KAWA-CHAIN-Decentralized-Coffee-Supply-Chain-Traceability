@@ -1,0 +1,23 @@
+{
+  "name": "coffee-chain",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "description": "KAWA-CHAIN: decentralized coffee supply-chain traceability platform (Rwanda)",
+  "scripts": {
+    "compile": "node scripts/compile-solc.js",
+    "node": "hardhat node",
+    "deploy": "node scripts/deploy-standalone.js",
+    "seed": "node scripts/seed.js",
+    "test": "bash run-e2e.sh",
+    "frontend": "cd frontend && npm run dev"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.10",
+    "solc": "0.8.24"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.2",
+    "ethers": "^6.13.0"
+  }
+}

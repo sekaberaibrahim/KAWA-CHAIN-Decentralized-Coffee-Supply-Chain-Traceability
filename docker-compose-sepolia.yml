@@ -1,0 +1,20 @@
+# KAWA·CHAIN on Sepolia — frontend only (blockchain is on the internet)
+#
+# First deploy contracts:
+#   DEPLOYER_KEY=0xYourKey ./deploy-sepolia.sh
+#   (or on Windows: edit and run deploy-sepolia.bat)
+#
+# Then start the frontend:
+#   docker compose -f docker-compose-sepolia.yml up --build
+#
+# Open http://localhost:5173 — MetaMask will auto-switch to Sepolia.
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/frontend.Dockerfile
+    container_name: kawa-chain-app
+    ports:
+      - "5173:5173"
+    # No chain container needed — contracts live on Sepolia permanently!
