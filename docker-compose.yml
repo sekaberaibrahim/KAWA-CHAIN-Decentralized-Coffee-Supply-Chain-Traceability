@@ -16,6 +16,8 @@ services:
     container_name: kawa-chain-node
     ports:
       - "8545:8545"
+    volumes:
+      - ./frontend/src/lib/deployment.json:/app/frontend/src/lib/deployment.json
     healthcheck:
       test: ["CMD-SHELL", "curl -s -X POST http://127.0.0.1:8545 -H 'Content-Type: application/json' --data '{\"jsonrpc\":\"2.0\",\"method\":\"eth_blockNumber\",\"params\":[],\"id\":1}' | grep -q result"]
       interval: 5s
@@ -29,6 +31,8 @@ services:
     container_name: kawa-chain-app
     ports:
       - "5173:5173"
+    volumes:
+      - ./frontend/src/lib/deployment.json:/app/src/lib/deployment.json
     depends_on:
       chain:
         condition: service_healthy

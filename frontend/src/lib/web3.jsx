@@ -70,7 +70,7 @@ export function Web3Provider({ children }) {
     setConnecting(true);
     try {
       const provider = new BrowserProvider(window.ethereum);
-      // Prompt network switch to the local Hardhat chain if needed
+      // Prompt network switch to Sepolia if needed
       const net = await provider.getNetwork();
       if (Number(net.chainId) !== deployment.chainId) {
         try {
@@ -80,15 +80,25 @@ export function Web3Provider({ children }) {
           });
         } catch (switchErr) {
           if (switchErr.code === 4902) {
+            try {
+              await window.ethereum.request({
+                method: "wallet_addEthereumChain",
+                params: [{
+                  chainId: "0x" + deployment.chainId.toString(16),
+                  chainName: "Sepolia Testnet",
+                  rpcUrls: ["https://ethereum-sepolia-rpc.publicnode.com"],
+                  nativeCurrency: { name: "SepoliaETH", symbol: "ETH", decimals: 18 },
+                  blockExplorerUrls: ["https://sepolia.etherscan.io"],
+                }],
+              });
+            } catch {
+              // MetaMask already has this chain ID registered (e.g. its
+              // built-in Sepolia) under a different RPC/name — fall through
+              // and just switch to whatever it already knows as Sepolia.
+            }
             await window.ethereum.request({
-              method: "wallet_addEthereumChain",
-              params: [{
-                chainId: "0x" + deployment.chainId.toString(16),
-                chainName: "Sepolia Testnet",
-                rpcUrls: ["https://ethereum-sepolia-rpc.publicnode.com"],
-                nativeCurrency: { name: "SepoliaETH", symbol: "ETH", decimals: 18 },
-                blockExplorerUrls: ["https://sepolia.etherscan.io"],
-              }],
+              method: "wallet_switchEthereumChain",
+              params: [{ chainId: "0x" + deployment.chainId.toString(16) }],
             });
           }
         }

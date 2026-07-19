@@ -1,11 +1,12 @@
 {
   "chainId": 11155111,
   "network": "sepolia",
-  "admin": "",
+  "admin": "0x0EA5bB9ba563B66e06ca90ed64eDdF67c2033B50",
   "contracts": {
-    "ParticipantRegistry": "0x0000000000000000000000000000000000000000",
-    "CoffeeBatchNFT": "0x0000000000000000000000000000000000000000",
-    "MockPriceOracle": "0x0000000000000000000000000000000000000000",
-    "CoffeeEscrow": "0x0000000000000000000000000000000000000000"
-  }
+    "ParticipantRegistry": "0x11C4DD3899aC8A6Be8B34579a65B7D7eeab59305",
+    "CoffeeBatchNFT": "0xb123FF1af9cE6abDA0231edeb9b601770DC01FCc",
+    "MockPriceOracle": "0xC95Ef62057f818579Ce980770Ba96586520300a9",
+    "CoffeeEscrow": "0x8b276B47174DCCAE8558f52e1E8d129B8ABEBF08"
+  },
+  "deployedAt": "2026-07-19T07:36:27.993Z"
 }
